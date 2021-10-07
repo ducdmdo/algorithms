@@ -5,19 +5,16 @@
         
     </body>
     <script>
-        function titleCase(str) {
-            let array = str.split(" ");
-            console.log(array);
-            let result = '';
-            for (let i = 0; i < array.length; i++) {
-                console.log(array[i]);
-                let strLower = array[i].substr(1).toLowerCase();
-                console.log("Inside for " +strLower );
-                result += array[i][0].toUpperCase() + strLower;
-                console.log(result);
+        function getIndexToIns(arr, num) {
+            arr.sort((a,b) => a-b);
+            for (let i = 0; i < arr.length; i ++) {
+                if (arr[i] >= num) return i;
             }
-            return result;
+            return arr.length;
+
         }
-        console.log(titleCase("I'm a little tea pot"));
+
+        getIndexToIns([40, 60], 50);
+        console.log(getIndexToIns([40, 60], 50));
     </script>
 </html>

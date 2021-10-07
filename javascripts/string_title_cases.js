@@ -2,8 +2,8 @@ function titleCase(str) {
     let array = str.split();
     let result = '';
     for (let i = 0; i < array.length; i++) {
-        let strLower = array[i].substr(1);
-        result += array[i][0] + strLower + " ";
+        let strLower = array[i].toLowerCase();
+        result += array[i].replaceAt(0, array[i].charAt(0).toUpperCase());
     }
     return result;
 
@@ -31,9 +31,8 @@ function titleCase(str) {
     var newTitle = str.split(" ");
     var updatedTitle = [];
     for (var st in newTitle) {
-      updatedTitle[st] = newTitle[st]
-        .toLowerCase()
-        .replaceAt(0, newTitle[st].charAt(0).toUpperCase());
+        let strLower = newTitle[st].substr(1).toLowerCase();
+        updatedTitle[st] = newTitle[st][0].toUpperCase() + strLower ;
     }
     return updatedTitle.join(" ");
-  }
+}

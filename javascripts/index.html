@@ -5,16 +5,20 @@
         
     </body>
     <script>
-        function getIndexToIns(arr, num) {
-            arr.sort((a,b) => a-b);
-            for (let i = 0; i < arr.length; i ++) {
-                if (arr[i] >= num) return i;
-            }
-            return arr.length;
+        function chunkArrayInGroups(arr, size) {
 
+        let resultArray = [];
+        if (arr.length <= size) {
+            resultArray.push(arr);
+        } else {
+            for (let i = 0; i < arr.length; i+=size) {
+                resultArray.push(arr.slice(i, i+size));
+            }
+        }
+        return resultArray;
         }
 
-        getIndexToIns([40, 60], 50);
-        console.log(getIndexToIns([40, 60], 50));
+        chunkArrayInGroups(["a", "b", "c", "d"], 2);
+        console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
     </script>
 </html>

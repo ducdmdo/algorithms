@@ -5,20 +5,15 @@
         
     </body>
     <script>
-        function chunkArrayInGroups(arr, size) {
-
-        let resultArray = [];
-        if (arr.length <= size) {
-            resultArray.push(arr);
-        } else {
-            for (let i = 0; i < arr.length; i+=size) {
-                resultArray.push(arr.slice(i, i+size));
-            }
+        function sumAll(arr) {
+            const [first,last] = [...arr].sort((a,b) => a-b);
+            return first !== last
+                ? first + sumAll([first + 1, last])
+                : first;
         }
-        return resultArray;
-        }
+  
+  sumAll([1, 4]);
 
-        chunkArrayInGroups(["a", "b", "c", "d"], 2);
-        console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+  console.log(sumAll([1, 4]));
     </script>
 </html>

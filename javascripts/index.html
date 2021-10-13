@@ -5,15 +5,17 @@
         
     </body>
     <script>
-        function sumAll(arr) {
-            const [first,last] = [...arr].sort((a,b) => a-b);
-            return first !== last
-                ? first + sumAll([first + 1, last])
-                : first;
-        }
-  
-  sumAll([1, 4]);
+        function whatIsInAName(collection, source) {
+            let srcKeys = Object.keys(source);
+            let srcValue = source[srcKeys];
+            console.log(srcValue);
+            console.log(srcKeys);
+            return collection.map(element => element)
 
-  console.log(sumAll([1, 4]));
+            console.log(collection);
+
+        }
+
+        whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
     </script>
 </html>

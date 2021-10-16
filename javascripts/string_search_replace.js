@@ -1,4 +1,23 @@
 function myReplace(str, before, after) {
+
+  // Check if before contains upper case as the first character
+    let is1CharBeforeUpper = /[A-Z]/.test(before.charAt(0))
+    let is1CharAfterUpper = /[A-Z]/.test(after.charAt(0))
+
+    let handle1CharForAfter="";
+    if (is1CharBeforeUpper) {
+      handle1CharForAfter = after[0].toUpperCase() + after.slice(1);
+    } else if (is1CharAfterUpper) {
+      handle1CharForAfter = after[0].toLowerCase() + after.slice(1);
+    } else {
+      handle1CharForAfter = after;
+    } 
+    console.log(handle1CharForAfter);
+  // Preserve the case of the first upper character when you replace it
+  return str.replace(before, handle1CharForAfter);
+}
+
+function myReplace(str, before, after) {
     // Find index where before is on string
     var index = str.indexOf(before);
     // Check to see if the first letter is uppercase or not

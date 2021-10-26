@@ -1,0 +1,68 @@
+function addTogether() {
+    //Variable and subroutine declaration (optional, but makes code cleaner)
+    var args = arguments;
+    var a = args[0];
+    var b = args[1];
+    function isNum(num) {
+      return Number.isInteger(num);
+    }
+  
+    //Actual program: relies on implicit return of 'undefined'
+    //Note: while refactoring I remove curly braces if not required
+    if (isNum(a)) {
+      if (isNum(b))
+        return a + b;
+      else if (!b)
+        return function(b) {
+          if (isNum(b))
+            return a + b;
+        };
+    }
+  }
+  
+
+function addTogether() {
+    const [first, second] = arguments;
+    if (typeof(first) !== "number")
+      return undefined;
+    if (second === undefined)
+      return (second) => addTogether(first, second);
+    if (typeof(second) !== "number")
+      return undefined;
+    return first + second;
+  }
+
+  function addTogether() {
+    const [first, second] = arguments;
+    // First argument is not a number
+    if (typeof(first) !== "number") {
+      return undefined;
+    }
+    // First argument is a number
+    //  and second argument is not defined
+    else if (second === undefined) {
+      function addSecond(second) {
+        // New argument is not a number
+        if (typeof(second) !== "number") {
+          return undefined;
+        }
+        // New argument is a number
+        else {
+          return first + second;
+        }
+      }
+      // Note: returning a *function*
+      return addSecond;
+    }
+    // First argument is a number
+    //  and second argument is not a number
+    else if (typeof(second) !== "number") {
+      return undefined;
+    }
+    // First argument is a number
+    //  and second argument is a number
+    else {
+      return first + second;
+    }
+  }
+  

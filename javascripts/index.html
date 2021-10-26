@@ -5,39 +5,22 @@
         
     </body>
     <script>
-        function sumFibs(num) {
-
-        //How to identify Fibonacci numbers - The first 2 numbers is 1; every additional number in the sequence is the sum of the two previous numbers
-        let fibonacyNumbers = [];
-            function fiboResult (num) {
-                let fibonacyArray = [];
-                fibonacyArray[0] = 1;
-                fibonacyArray[1] = 1;
-
-            for (let i = 2; i <= num  ; i++) {
-                fibonacyArray[i] = fibonacyArray[i-2] + fibonacyArray[i-1];
-                if (fibonacyArray[i] >= num) {
-                    fibonacyArray.pop();
-                    i = num;
-                }
-            }
-            return fibonacyArray;
-            }
-            
-
-        console.log(fiboResult(1000));
-        //How to identify Fibonacci odd numbers
-        let oddFibonacciNumber = fiboResult(num).reduce((previousResultValue, currentValue) => {
-        if(currentValue %2 !== 0) {
-            previousResultValue.push(currentValue);
+        function truthCheck(collection, pre) {
+        return collection.every(function(element) {
+            return element.hasOwnProperty(pre) && Boolean(element[pre]);
+        });
         }
-        return previousResultValue;
-        },[]);
-        console.log(oddFibonacciNumber);
-        //Return sum of odd number of Fibonacci series number
-        return oddFibonacciNumber.reduce((pre, curr) => pre+curr,0);
-        }
-        //console.log(fiboResult(1000));
-        console.log(sumFibs(75025));
+
+        // test here
+        truthCheck(
+        [
+            { user: "Tinky-Winky", sex: "male" },
+            { user: "Dipsy", sex: "male" },
+            { user: "Laa-Laa", sex: "female" },
+            { user: "Po", sex: "female" }
+        ],
+        "sex"
+        );
+        
     </script>
 </html>

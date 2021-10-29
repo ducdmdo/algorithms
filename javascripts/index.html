@@ -5,22 +5,25 @@
         
     </body>
     <script>
-        function truthCheck(collection, pre) {
-        return collection.every(function(element) {
-            return element.hasOwnProperty(pre) && Boolean(element[pre]);
-        });
+       function palindrome(str) {
+
+        //lower cases all the letters remove all non-alphanumberic characters
+        str = str.toLowerCase().replace(/[\W_]+/g,"");
+        console.log(str);
+        let result = true;
+        let j = 0;
+
+        //verify the palindrome string
+        for (let i = 0; i < str.length - 1; i++) {
+            if (str[i] !== str[str.length-1 - j]){
+                result = false;
+            }
+            j++;
+        }
+        return result;
         }
 
-        // test here
-        truthCheck(
-        [
-            { user: "Tinky-Winky", sex: "male" },
-            { user: "Dipsy", sex: "male" },
-            { user: "Laa-Laa", sex: "female" },
-            { user: "Po", sex: "female" }
-        ],
-        "sex"
-        );
+        console.log(palindrome("not a palindrome"));
         
     </script>
 </html>

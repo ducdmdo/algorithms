@@ -1,15 +1,22 @@
 function palindrome(str) {
 
     //lower cases all the letters remove all non-alphanumberic characters
-      str = str.lowercase().replace(/[\W_]+/g,"");
+    str = str.toLowerCase().replace(/[\W_]+/g,"");
     console.log(str);
-  
-    //how to turn a string to a palindrome
-  
-    //check palindrome
-  
-  
-    return true;
-  }
-  
-  console.log(palindrome("eye"));
+    let result = true;
+    let j = 0;
+
+    //verify the palindrome string
+    for (let i = 0; i < str.length - 1; i++) {
+        if (str[i] !== str[str.length-1 - j]){
+            result = false;
+        }
+        j++;
+    }
+    return result;
+    }
+
+    console.log(palindrome("not a palindrome"));
+    
+
+    
